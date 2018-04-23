@@ -26,6 +26,11 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  created(){
+    this.$api.get('/loadMavinList',{},(res)=>{
+      console.log(res)
+    })
   }
 }
 </script>
