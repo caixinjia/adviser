@@ -1,0 +1,211 @@
+// 颜色
+@b-0: #000;
+@b-3: #333;
+@b-6: #666;
+@b-9: #999;
+@mi1: #ff3600;
+@mi2: #ff3700;
+@bdcolor: #e6e6e6;
+
+// 主色
+@mainCol:#f08200;
+// 点缀色
+@lightGreen: #13c21c;
+// 主标题色
+@mainTitle: #333;
+// 副标题色
+@subTitle: #666;
+// 辅助文字色
+@textCol: #999;
+// 输入框提示色
+@inputCol:#adadad;
+// 边框色
+@borCol: #e5e5e5;
+// 底背景色
+@bg:#f5f5f5;
+// 错误色
+@error: #ff3333;
+
+//浮动清除浮动
+.fl(l) {
+    float: left;
+}
+.fl(r) {
+    float: right;
+}
+.clearfix{
+    *zoom: 1;
+    &::after,
+    &::before{
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+// 定位
+.position(r) {
+    position: relative;
+}
+.position(a) {
+    position: absolute;
+}
+.position(f) {
+    position: fixed;
+}
+// 方向
+.algin(l){
+    text-align: left;
+}
+.algin(r) {
+    text-align: right;
+}
+.algin(c) {
+    text-align: center;
+}
+// 改变
+.display(@play: block){
+    display: @play;
+}
+// 字体大小
+.fontSize(@size) {
+    font-size: @size;
+}
+// 文字粗细
+.blod{
+    font-weight: bold;
+}
+.normal{
+    font-weight: normal;
+}
+// 行高
+.line(@line) {
+    line-height: @line;
+}
+//颜色
+.color(@col:#333) {
+    color: @col;
+}
+// padding值
+.padding(@p) {
+    padding: @p;
+}
+.paddingL(@p){
+    padding-left: @p;
+}
+.paddingR(@p){
+    padding-right: @p;
+}
+.paddingT(@p){
+    padding-top: @p;
+}
+.paddingB(@p){
+    padding-bottom: @p;
+}
+.paddingAll(@t,@r,@b,@l) {
+    padding: @t @r @b @l;
+}
+.paddingRow(@p) {
+    padding-left: @p;
+    padding-right: @p;
+}
+// 背景色
+.bg(@bg) {
+    background-color: @bg;
+}
+// 一行不换行显示省略号
+.oneLine(){
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+// 多行换行显示省略号
+.moreLine(@line:2){
+    .display(-webkit-box);
+    -webkit-line-clamp: @line;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+}
+// 圆角
+.reduis(@ret:4px){
+    border-radius: @ret;
+}
+// 字体
+.iconfont() {
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.flex{
+    display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box; /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox; /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+}
+// 内容为1
+.flex-1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    .position(r);
+}
+.flex_num(@num) {
+    -webkit-box-flex: @num;
+    -webkit-flex: @num;
+    -ms-flex: @num;
+    flex: @num;
+    .position(r);
+}
+// 主轴 y轴
+.flex-dir(@dir: column) {
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: @dir;
+    -ms-flex-direction: @dir;
+    flex-direction: @dir;
+}
+// 主轴居中
+.justify-content(@ali: center) {
+    -webkit-box-pack: @ali;
+    -moz-justify-content: @ali;
+    -webkit-justify-content: @ali;
+    justify-content: @ali;
+}
+// 侧轴居中
+.align-items(@ali: center) {
+    -webkit-box-align: @ali;
+    -moz-align-items: @ali;
+    -webkit-align-items: @ali;
+    align-items: @ali;
+}
+// 阴影
+.box-shadow(@x,@y,@r,@m,@color) {
+    box-shadow: @x @y @r @m @color;
+}
+// ios滚动
+.ipScroll{
+    -webkit-overflow-scrolling : touch;
+}
+.scroll-y(a) {
+    overflow-y: auto;
+}
+.scroll-y(h) {
+    overflow-y: hidden;
+}
+
+.scroll-x(a) {
+    overflow-x: auto;
+}
+.scroll-x(h) {
+    overflow-x: hidden;
+}
+.w(@w){
+    width: @w;
+}
+.h(@h){
+    height: @h;
+}
