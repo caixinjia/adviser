@@ -53,13 +53,13 @@
     position: fixed;
 }
 // 方向
-.algin(l){
+.align(l){
     text-align: left;
 }
-.algin(r) {
+.align(r) {
     text-align: right;
 }
-.algin(c) {
+.align(c) {
     text-align: center;
 }
 // 改变
@@ -107,6 +107,37 @@
 .paddingRow(@p) {
     padding-left: @p;
     padding-right: @p;
+}
+.paddingCol(@p) {
+    padding-top: @p;
+    padding-bottom: @p;
+}
+// margin
+.margin(@p) {
+    margin: @p;
+}
+.marginL(@p){
+    margin-left: @p;
+}
+.marginR(@p){
+    margin-right: @p;
+}
+.marginT(@p){
+    margin-top: @p;
+}
+.marginB(@p){
+    margin-bottom: @p;
+}
+.marginAll(@t,@r,@b,@l) {
+    margin: @t @r @b @l;
+}
+.marginRow(@p) {
+    margin-left: @p;
+    margin-right: @p;
+}
+.marginCol(@p) {
+    margin-top: @p;
+    margin-bottom: @p;
 }
 // 背景色
 .bg(@bg) {

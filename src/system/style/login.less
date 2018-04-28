@@ -1,0 +1,76 @@
+@import "./tools.less";
+
+.login-wrap {
+  .position(r);
+  .w(100%);
+  .h(100%);
+  background: url("../assets/images/bg-1.webp") no-repeat;
+  background-size: cover;
+
+  .ms-title {
+    .position(a);
+    top: 52%;
+    .w(100%);
+    .marginT(-230px);
+    .align(c);
+    .fontSize(32px);
+  }
+
+  .ms-login {
+    .position(a);
+    left: 50%;
+    top: 55%;
+    .w(600px);
+    .h(400px);
+    .marginL(-300px);
+    .marginT(-200px);
+    background-image: linear-gradient(143deg, #81F0FF 0%, #5FA7FF 100%);
+    box-shadow: 0 2px 30px 0 rgba(0,0,0,0.40);
+    border-radius: 10px;
+
+    .ms-div {
+      .flex;
+      .fontSize(20px);
+      .color(#fff);
+      .h(70px);
+      .line(70px);
+      background: rgba(255, 255, 255, 0.15);
+
+      .ms-label {
+        .w(30%);
+        .align(c);
+      }
+
+      .ms-input {
+        .w(70%);
+
+        input {
+          .color(#fff);
+          caret-color: #fff;
+          border: none;
+          background: transparent;
+        }
+      }
+
+      &.on {
+        background: rgba(255, 255, 255, 0.25);
+      }
+    }
+
+    .login-btn {
+      .h(60px);
+      .line(60px);
+      .w(340px);
+      .align(c);
+      .marginAll(92px,auto,0,auto);
+      background: rgba(255, 255, 255, 0.3);
+      .fontSize(17px);
+      .color(#fff);
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+}

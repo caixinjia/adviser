@@ -8,6 +8,10 @@ Vue.use(Router)
 const router = new Router({
   	routes:[
       {
+          path:'/',
+          redirect:'/login'
+      },
+      {
         path:'/admin',
         component:mainWarp,
         children:[
