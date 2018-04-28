@@ -1,51 +1,66 @@
 @import url('./tools.less');
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-body{
-    background-color: #f2f4f5;
-    font-size: 12px;
-    font-family: Helvetica, sans-serif;
-    color: #333;
+
+body {
+  background-color: #f2f4f5;
+  font-size: 12px;
+  font-family: Helvetica, sans-serif;
+  color: #333;
 }
-h1,h2,h3,h4,h5,h6{
-    font-weight: normal;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
 }
-li{
-    list-style: none;
+
+li {
+  list-style: none;
 }
-img{
-    border: 0 none;
-    vertical-align: middle;
+
+img {
+  border: 0 none;
+  vertical-align: middle;
 }
-a{
-    text-decoration: none;
+
+a {
+  text-decoration: none;
 }
-html,
+
+#app,
 body,
-#app{
-    width: 100%;
-    height: 100%;
+html {
+  width: 100%;
+  height: 100%;
 }
-input{
+
+input {
   outline: none;
 }
+
 ::-webkit-scrollbar {
-    width:8px;
+  width: 8px;
 }
 /* 滚动槽 */
 ::-webkit-scrollbar-track {
--webkit-box-shadow:inset006pxrgba(0,0,0,0.3);
-    border-radius:10px;
+  -webkit-box-shadow: inset006pxrgba(0,0,0,0.3);
+  border-radius: 10px;
 }
 /* 滚动条滑块 */
 ::-webkit-scrollbar-thumb {
-    border-radius:10px;
-    background:rgba(32, 160, 255, 0.45);
--webkit-box-shadow:inset006pxrgba(0,0,0,0.5);
+  border-radius: 10px;
+  background: rgba(32, 160, 255, 0.45);
+  -webkit-box-shadow: inset006pxrgba(0,0,0,0.5);
 }
+
 ::-webkit-scrollbar-thumb:window-inactive {
-    background:rgba(255,0,0,0.4);
+  background: rgba(255,0,0,0.4);
 }
