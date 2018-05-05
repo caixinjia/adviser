@@ -9,11 +9,13 @@
 
   .ms-title {
     .position(a);
-    top: 52%;
+    top: 50%;
     .w(100%);
-    .marginT(-230px);
+    .marginT(-300px);
     .align(c);
-    .fontSize(32px);
+    .fontSize(72px);
+    .color(#fff);
+    letter-spacing: 5px;
   }
 
   .ms-login {
@@ -29,6 +31,7 @@
     border-radius: 10px;
 
     .ms-div {
+      .position(r);
       .flex;
       .fontSize(20px);
       .color(#fff);
@@ -62,7 +65,7 @@
       .line(60px);
       .w(340px);
       .align(c);
-      .marginAll(92px,auto,0,auto);
+      .marginAll(30px,auto,0,auto);
       background: rgba(255, 255, 255, 0.3);
       .fontSize(17px);
       .color(#fff);
@@ -72,5 +75,39 @@
         background: rgba(255, 255, 255, 0.2);
       }
     }
+    .remember{
+      .marginT(40px);
+      .h(22px);
+      .line(22px);
+      .fontSize(16px);
+      div{
+        background: url("../assets/images/登录页-保持登录-2.png") no-repeat center left;
+        background-size: 20px;
+        .paddingL(35px);
+        margin: 0 auto;
+        .w(100px);
+        .align(c);
+        .color(#fff);
+        cursor: pointer;
+        user-select: none;
+      }
+      &.on{
+        div{
+          background: url("../assets/images/登录页面-保持登录.png") no-repeat center left;
+          background-size: 20px;
+        }
+      }
+    }
+    .hide-pwd {
+      .position(a);
+      .h(19px);
+      .w(25px);
+      top:26px;
+      right: 50px;
+      background: url("../assets/images/登录页-隐藏密码.png") no-repeat;
+      background-size: 25px;
+      cursor: pointer;
+    }
   }
+
 }
