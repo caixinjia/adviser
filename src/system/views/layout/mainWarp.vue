@@ -1,3 +1,87 @@
+<template>
+    <div class="layout">
+        <Layout>
+            <Header>
+              <div class="layout-logo"></div>
+            </Header>
+            <Layout :style="{minHeight: '100vh'}">
+                <Sider collapsible :collapsed-width="78" v-model="isCollapsed">
+                  <Menu active-name="yuyue" theme="dark" width="auto" :class="menuitemClasses">
+                    <router-link :to="item.link" v-for="item in menuData">
+                      <MenuItem :name="item.name">
+                          <Icon :type="item.icon"></Icon>
+                          <span>{{item.text}}</span>
+                      </MenuItem>
+                    </router-link>
+                  </Menu>
+                </Sider>
+                <Layout >
+                    <Content>
+                        <router-view/>
+                    </Content>
+                </Layout>
+            </Layout>
+        </Layout>
+    </div>
+</template>
+<script>
+export default {
+    data () {
+        return {
+            isCollapsed: false,
+            menuData:[
+              {
+                link:'',
+                name:'yuyue',
+                icon:'clock',
+                text:'预约管理'
+              },
+              {
+                link:'',
+                name:'zixun',
+                icon:'chatboxes',
+                text:'咨询管理'
+              },
+              {
+                link:'',
+                name:'zhuanjia',
+                icon:'person',
+                text:'专家信息'
+              },
+              {
+                link:'/admin/schoolList',
+                name:'yuanxiao',
+                icon:'university',
+                text:'院校专业'
+              },
+              {
+                link:'',
+                name:'shoukuan',
+                icon:'cash',
+                text:'收款记录'
+              },
+              {
+                link:'',
+                name:'wenzhang',
+                icon:'edit',
+                text:'文章编辑'
+              },
+            ]
+        };
+    },
+    computed: {
+        menuitemClasses: function () {
+            return [
+                'menu-item',
+                this.isCollapsed ? 'collapsed-menu' : ''
+            ]
+        }
+    }
+}
+</script>
+<style lang="less">
+@import url('../../style/index.less');
+</style>
 <style scoped>
 .layout{
     border: 1px solid #d7dde4;
@@ -6,6 +90,9 @@
     border-radius: 4px;
     overflow: hidden;
 }
+.ivu-layout-header {
+    height: 80px;
+  }
 .layout-logo{
     width: 100px;
     height: 30px;
@@ -21,79 +108,31 @@
     margin: 0 auto;
     margin-right: 20px;
 }
-</style>
-<template>
-    <div class="layout">
-        <Layout>
-            <Header>
-                <Menu mode="horizontal" theme="dark" active-name="1">
-                    <div class="layout-logo"></div>
-                    <div class="layout-nav">
-                        <MenuItem name="1">
-                            <Icon type="ios-navigate"></Icon>
-                            Item 1
-                        </MenuItem>
-                        <MenuItem name="2">
-                            <Icon type="ios-keypad"></Icon>
-                            Item 2
-                        </MenuItem>
-                        <MenuItem name="3">
-                            <Icon type="ios-analytics"></Icon>
-                            Item 3
-                        </MenuItem>
-                        <MenuItem name="4">
-                            <Icon type="ios-paper"></Icon>
-                            Item 4
-                        </MenuItem>
-                    </div>
-                </Menu>
-            </Header>
-            <Layout>
-                <Sider hide-trigger :style="{background: '#fff'}">
-                    <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
-                        <Submenu name="1">
-                            <template slot="title">
-                                <Icon type="ios-navigate"></Icon>
-                                Item 1
-                            </template>
-                            <MenuItem name="1-1">Option 1</MenuItem>
-                            <MenuItem name="1-2">Option 2</MenuItem>
-                            <MenuItem name="1-3">Option 3</MenuItem>
-                        </Submenu>
-                        <Submenu name="2">
-                            <template slot="title">
-                                <Icon type="ios-keypad"></Icon>
-                                Item 2
-                            </template>
-                            <MenuItem name="2-1">Option 1</MenuItem>
-                            <MenuItem name="2-2">Option 2</MenuItem>
-                        </Submenu>
-                        <Submenu name="3">
-                            <template slot="title">
-                                <Icon type="ios-analytics"></Icon>
-                                Item 3
-                            </template>
-                            <MenuItem name="3-1">Option 1</MenuItem>
-                            <MenuItem name="3-2">Option 2</MenuItem>
-                        </Submenu>
-                    </Menu>
-                </Sider>
-                <Layout :style="{padding: '0 24px 24px'}">
-                    <Breadcrumb :style="{margin: '24px 0'}">
-                        <BreadcrumbItem>Home</BreadcrumbItem>
-                        <BreadcrumbItem>Components</BreadcrumbItem>
-                        <BreadcrumbItem>Layout</BreadcrumbItem>
-                    </Breadcrumb>
-                    <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
-                        <router-view/>
-                    </Content>
-                </Layout>
-            </Layout>
-        </Layout>
-    </div>
-</template>
-<script>
-    export default {
-
+.layout-con{
+        height: 100%;
+        width: 100%;
     }
-</script>
+.menu-item span{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    transition: width .2s ease .2s;
+    margin-left: 12px;
+    font-size: 20px;
+}
+.menu-item i{
+
+    vertical-align: middle;
+    font-size: 28px;
+    margin-right: 0;
+}
+.collapsed-menu span{
+    display: none;
+}
+.ivu-menu-vertical .ivu-menu-item{
+  padding: 24px;
+}
+
+</style>

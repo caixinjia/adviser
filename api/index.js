@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import spin from 'iview/src/components/spin'
+
 // 配置API接口地址
 let root = '/api'
 // 引用axios
@@ -45,6 +47,7 @@ function apiAxios (method, url, params, success, failure) {
   } else {
     params = todd(method,params)
   }
+	spin.show()
   axios({
     method: method,
     url: url,
@@ -54,6 +57,7 @@ function apiAxios (method, url, params, success, failure) {
     withCredentials: true
   }).then(function (res) {
     // if (res.data.code === 0) {
+		spin.hide()
       if (success) {
         success(res.data)
       }
