@@ -1,17 +1,15 @@
 <template>
   <div>
-    <div class="table-list-header">
-      <div class="btn">删除所选</div>
-      <div class="btn">新增院校</div>
-    </div>
+    <listHeader deleteText='删除所选' :deleteFunction='search' addText='新增院校' :addFunciton='search'></listHeader>
     <div class="table-list">
       <Table ref="selection" :columns="columns" :data="data"></Table>
-      <Page :total="20" show-elevator></Page>
+      <Page :total="total" show-elevator @on-change="changePage" :page-size="20"></Page>
     </div>
 
   </div>
 </template>
 <script>
+import listHeader from '../../components/listHeader.vue'
 export default {
   data(){
     return {
@@ -23,6 +21,10 @@ export default {
           },
           {
               title: '物理院校',
+              key: 'SCHOOL_NAME'
+          },
+          {
+              title: '招生院校',
               key: 'RECRUIT_NAME'
           },
           {
@@ -30,20 +32,12 @@ export default {
               key: 'SCHOOL_CODE'
           },
           {
-              title: '招生批次',
-              key: 'address'
-          },
-          {
-              title: '录取批次',
-              key: 'address'
-          },
-          {
               title: '办学层次',
-              key: 'address'
+              key: 'SCHOOL_GRADE'
           },
           {
               title: '办学性质',
-              key: 'address'
+              key: 'SCHOOL_NATURE'
           },
           {
               title: '所在省市',
@@ -55,22 +49,34 @@ export default {
           },
           {
               title: '专业个数',
-              key: 'address'
+              key: 'SUBJECT_COUNT'
           }
       ],
-      data: []
+      data: [],
+      total:0
     }
+  },
+  components: {
+    listHeader
   },
   created(){
     this.search()
   },
   methods:{
-    search(){
+    search(page=1){
+      // 获取总页码数
+      this.$api.get('/loadSchoolList',{},(res)=>{
+        this.total = res.length;
+      })
       this.$api.get('/loadSchoolList',{
-        endRow: 20
+        beginRow:(page-1)*20+1,
+        endRow: page*20
       },(res)=>{
         this.data = res
       })
+    },
+    changePage(current){
+      this.search(current)
     }
   }
 }

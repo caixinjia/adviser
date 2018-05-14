@@ -7,7 +7,7 @@
             <Layout :style="{minHeight: '100vh'}">
                 <Sider collapsible :collapsed-width="78" v-model="isCollapsed">
                   <Menu active-name="yuyue" theme="dark" width="auto" :class="menuitemClasses">
-                    <router-link :to="item.link" v-for="item in menuData">
+                    <router-link :to="item.link" v-for="item in menuData" :key="item.name">
                       <MenuItem :name="item.name">
                           <Icon :type="item.icon"></Icon>
                           <span>{{item.text}}</span>
@@ -81,6 +81,7 @@ export default {
 </script>
 <style lang="less">
 @import url('../../style/index.less');
+@import url('../../style/components.less');
 </style>
 <style scoped>
 .layout{
@@ -119,17 +120,20 @@ export default {
     white-space: nowrap;
     vertical-align: bottom;
     transition: width .2s ease .2s;
-    margin-left: 12px;
-    font-size: 20px;
+    margin-left: 16px;
+    /* font-size: 20px; */
 }
 .menu-item i{
 
     vertical-align: middle;
-    font-size: 28px;
+    /* font-size: 28px; */
     margin-right: 0;
 }
 .collapsed-menu span{
     display: none;
+}
+.collapsed-menu i{
+    font-size: 28px;
 }
 .ivu-menu-vertical .ivu-menu-item{
   padding: 24px;

@@ -6,6 +6,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
+    // publicPath: 'webPage/dist/',
     publicPath: '/dist/',
     filename: 'build.js'
   },
@@ -17,7 +18,12 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ],
-      },      {
+      },
+      {
+         test: /iview.src.*?js$/,
+         loader: 'babel-loader'
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {

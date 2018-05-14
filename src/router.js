@@ -1,34 +1,35 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import mainWarp from './system/views/layout/mainWarp.vue';
-import login from './system/views/login/login.vue';
-import index from './system/views/index/index.vue';
-import schoolList from './system/views/school/schoolList.vue';
 Vue.use(Router)
 
 const router = new Router({
   	routes:[
       {
           path:'/',
-          redirect:'/login'
+          redirect:'/pdf'
       },
       {
         path:'/admin',
-        component:mainWarp,
+        component:resolve => require(['./system/views/layout/mainWarp.vue'],resolve),
         children:[
           {
             path:'/',
-            component:index,
+            component:resolve => require(['./system/views/index/index.vue'],resolve),
           },
           {
             path:'schoolList',
-            component:schoolList,
+            component:resolve => require(['./system/views/school/schoolList.vue'],resolve),
           }
         ]
       },
       {
         path:'/login',
-        component:login
+        component:resolve => require(['./system/views/login/login.vue'],resolve)
+      }
+      ,
+      {
+        path:'/pdf',
+        component:resolve => require(['./system/views/pdf/pdf.vue'],resolve)
       }
     ]
 })
