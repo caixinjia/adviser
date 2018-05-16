@@ -6,8 +6,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    // publicPath: 'webPage/dist/',
-    publicPath: '/dist/',
+    publicPath: 'dist/',
     filename: 'build.js'
   },
   module: {
@@ -68,15 +67,15 @@ module.exports = {
     watchOptions: {
         aggregateTimeout: 300
     },
-    port: '8080', //设置端口号
+    // port: '8080', //设置端口号
     //其实很简单的，只要配置这个参数就可以了
     proxy: {
-        '/api': {
+        '/chuxian': {
             target: 'https://fjgz360.cn/chuxian',
             secure: false,
             changeOrigin: true,
             pathRewrite:{
-              '^/api': ''
+              '^/chuxian': ''
             }
         }
     }

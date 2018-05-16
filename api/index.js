@@ -2,7 +2,7 @@ import Vue from 'vue'
 import spin from 'iview/src/components/spin'
 
 // 配置API接口地址
-let root = '/api'
+let root = '/chuxian'
 // 引用axios
 let axios = require('axios')
 // 自定义判断元素类型JS
