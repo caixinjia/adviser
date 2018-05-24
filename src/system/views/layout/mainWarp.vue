@@ -3,6 +3,11 @@
         <Layout>
             <Header>
               <div class="layout-logo"></div>
+              <div class="user-info">
+                <div class="login-out" @click="loginOut">
+                  退出登录
+                </div>
+              </div>
             </Header>
             <Layout :style="{minHeight: '100vh'}">
                 <Sider collapsible :collapsed-width="78" v-model="isCollapsed">
@@ -66,8 +71,20 @@ export default {
                 icon:'edit',
                 text:'文章编辑'
               },
-            ]
+            ],
+            userInfo:''
         };
+    },
+    mounted(){
+      this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
+    },
+    methods:{
+      loginOut(){
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userInfo');
+        localStorage.removeItem('userRole');
+        this.$router.push('/login')
+      }
     },
     computed: {
         menuitemClasses: function () {
@@ -93,16 +110,33 @@ export default {
 }
 .ivu-layout-header {
     height: 80px;
+    background: #242536;
   }
 .layout-logo{
-    width: 100px;
-    height: 30px;
-    background: #5b6270;
-    border-radius: 3px;
-    float: left;
-    position: relative;
-    top: 15px;
-    left: 20px;
+  width: 200px;
+  height: 80px;
+  background: url('../../assets/images/后台.png') no-repeat center;
+  background-size: 180px;
+  background-color: #151524;
+  float: left;
+  position: relative;
+  top: 0;
+  left: -50px;
+}
+
+.ivu-layout-header .user-info{
+  float: right;
+  position: relative;
+  height: 30px;
+  top: 25px;
+  right: 0;
+  font-size: 18px;
+  line-height: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+.ivu-layout-header .user-info:hover{
+  opacity: 0.5;
 }
 .layout-nav{
     width: 420px;

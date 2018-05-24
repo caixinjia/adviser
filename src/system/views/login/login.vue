@@ -17,13 +17,14 @@
       <div class="hide-pwd" @click="toHidePwd"></div>
     </div>
     <div class="remember" :class="{on:remember}" @click="rememberPwd">
-      <div>记住密码</div>
+      <div>记住账号</div>
     </div>
-    <div class="login-btn">登录</div>
+    <div class="login-btn" @click="login">登录</div>
   </div>
 </div>
 </template>
 <script>
+import md5 from 'js-md5';
 export default {
   data() {
     return {
@@ -35,6 +36,12 @@ export default {
         phone: '',
         password: ''
       }
+    }
+  },
+  mounted(){
+    if(localStorage.getItem('rememberPhone')){
+      this.remember = true;
+      this.myData.phone = localStorage.getItem('rememberPhone');
     }
   },
   methods: {
@@ -57,6 +64,45 @@ export default {
     },
     rememberPwd() {
       this.remember = !this.remember;
+    },
+    login(){
+      return new Promise((resolve,reject)=>{
+        let data = {
+          mobileNum:this.myData.phone,
+          passwd: md5.hex(this.myData.password)
+        }
+        this.$api.post('/login',data,(res)=>{
+          if(res.RESULTS=='SUCCESS'){
+            if(res.ROLE=='role_manager'){
+              localStorage.setItem('userRole',res.ROLE);
+              localStorage.setItem('userId',res.USER_ID)
+              this.getUserInfo(res.USER_ID);
+              this.sureRemeber();
+              resolve(res)
+            }else{
+              this.$Message.error('权限不够');
+            }
+          }else{
+            this.$Message.error(res.MSG);
+            reject(res)
+          }
+        })
+      })
+    },
+    getUserInfo(userId){
+      this.$api.get('/showUserInfo',{
+        userId:userId
+      },(res)=>{
+        localStorage.setItem('userInfo',JSON.stringify(res));
+        this.$router.push('/admin')
+      })
+    },
+    sureRemeber(){
+      if(this.remember){
+        localStorage.setItem('rememberPhone',this.myData.phone);
+      }else{
+        localStorage.removeItem('rememberPhone');
+      }
     }
   }
 }

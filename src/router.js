@@ -6,7 +6,7 @@ const router = new Router({
   	routes:[
       {
           path:'/',
-          redirect:'/pdf'
+          redirect:'/login'
       },
       {
         path:'/admin',
@@ -32,5 +32,16 @@ const router = new Router({
         component:resolve => require(['./system/views/pdf/pdf.vue'],resolve)
       }
     ]
+})
+router.beforeEach((to, from, next)=>{
+  if(to.path!='/login'){
+    if(localStorage.getItem('userId')){
+      next()
+    }else{
+      router.push('/login')
+    }
+  }else{
+    next()
+  }
 })
 export default router
