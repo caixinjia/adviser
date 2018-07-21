@@ -14,11 +14,19 @@ const router = new Router({
         children:[
           {
             path:'/',
-            component:resolve => require(['./system/views/index/index.vue'],resolve),
+            component:resolve => require(['./system/views/advisory/advisoryList.vue'],resolve),
           },
           {
             path:'schoolList',
             component:resolve => require(['./system/views/school/schoolList.vue'],resolve),
+          },
+          {
+            path:'advisoryList',
+            component:resolve => require(['./system/views/advisory/advisoryList.vue'],resolve),
+          },
+          {
+            path:'404',
+            component:resolve => require(['./system/views/404.vue'],resolve),
           }
         ]
       },

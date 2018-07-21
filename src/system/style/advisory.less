@@ -1,0 +1,62 @@
+@import url('./tools.less');
+.advisory{
+  .advisory-header{
+    height: 60px;
+    background: #fff;
+  }
+  .advisory-list{
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 40px;
+    .advisory-item{
+      width: 25%;
+      padding-left: 40px;
+      .advisory-time{
+        height: 60px;
+        line-height: 40px;
+        padding-top: 20px;
+        font-size: 14px;
+        color: #6A7088;
+      }
+      .advisory-detail{
+        border-top: 5px solid #FF9784;
+        background: rgba(255,255,255,0.50);
+        box-shadow: 0 0 10px 0 #D2D7E0;
+        border-radius: 5px;
+        &.no-answer{
+          border-top: 5px solid #5FA7FF;
+        }
+        .advisory-question{
+          padding: 20px;
+          font-size: 14px;
+          line-height: 1.5;
+          color: #6A7088;
+          border-bottom: 1px solid #eee;
+        }
+        .advisory-answer{
+          color: #252628;
+          padding: 20px;
+          font-size: 14px;
+          line-height: 1.5;
+        }
+        .answer-btn{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 60px;
+          div{
+            background-image: linear-gradient(-143deg, #81F0FF 0%, #5FA7FF 100%);
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+            color: #FFFFFF;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

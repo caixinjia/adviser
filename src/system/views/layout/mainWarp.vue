@@ -11,7 +11,7 @@
             </Header>
             <Layout :style="{minHeight: '100vh'}">
                 <Sider collapsible :collapsed-width="78" v-model="isCollapsed">
-                  <Menu active-name="yuyue" theme="dark" width="auto" :class="menuitemClasses">
+                  <Menu active-name="zixun" theme="dark" width="auto" :class="menuitemClasses">
                     <router-link :to="item.link" v-for="item in menuData" :key="item.name">
                       <MenuItem :name="item.name">
                           <Icon :type="item.icon"></Icon>
@@ -36,19 +36,19 @@ export default {
             isCollapsed: false,
             menuData:[
               {
-                link:'',
-                name:'yuyue',
-                icon:'clock',
-                text:'预约管理'
-              },
-              {
-                link:'',
+                link:'/admin/advisoryList',
                 name:'zixun',
                 icon:'chatboxes',
                 text:'咨询管理'
               },
               {
-                link:'',
+                link:'/admin/404',
+                name:'yuyue',
+                icon:'clock',
+                text:'预约管理'
+              },
+              {
+                link:'/admin/404',
                 name:'zhuanjia',
                 icon:'person',
                 text:'专家信息'
@@ -59,18 +59,18 @@ export default {
                 icon:'university',
                 text:'院校专业'
               },
-              {
-                link:'',
-                name:'shoukuan',
-                icon:'cash',
-                text:'收款记录'
-              },
-              {
-                link:'',
-                name:'wenzhang',
-                icon:'edit',
-                text:'文章编辑'
-              },
+              // {
+              //   link:'/admin/404',
+              //   name:'shoukuan',
+              //   icon:'cash',
+              //   text:'收款记录'
+              // },
+              // {
+              //   link:'/admin/404',
+              //   name:'wenzhang',
+              //   icon:'edit',
+              //   text:'文章编辑'
+              // },
             ],
             userInfo:''
         };

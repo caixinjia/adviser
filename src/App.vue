@@ -7,9 +7,6 @@
 <script>
 export default {
   created(){
-    this.$api.get('/loadMavinList',{},(res)=>{
-      console.log(res)
-    })
   }
 }
 </script>
