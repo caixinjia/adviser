@@ -25,6 +25,18 @@ const router = new Router({
             component:resolve => require(['./system/views/advisory/advisoryList.vue'],resolve),
           },
           {
+            path:'paymentList',
+            component:resolve => require(['./system/views/payment/paymentList.vue'],resolve),
+          },
+          {
+            path:'mavinList',
+            component:resolve => require(['./system/views/mavin/mavinList.vue'],resolve),
+          },
+          {
+            path:'subjectList',
+            component:resolve => require(['./system/views/subject/subjectList.vue'],resolve),
+          },
+          {
             path:'404',
             component:resolve => require(['./system/views/404.vue'],resolve),
           }

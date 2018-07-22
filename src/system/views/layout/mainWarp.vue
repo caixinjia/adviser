@@ -11,7 +11,7 @@
             </Header>
             <Layout :style="{minHeight: '100vh'}">
                 <Sider collapsible :collapsed-width="78" v-model="isCollapsed">
-                  <Menu active-name="zixun" theme="dark" width="auto" :class="menuitemClasses">
+                  <Menu :active-name="activeName" theme="dark" width="auto" :class="menuitemClasses">
                     <router-link :to="item.link" v-for="item in menuData" :key="item.name">
                       <MenuItem :name="item.name">
                           <Icon :type="item.icon"></Icon>
@@ -34,43 +34,32 @@ export default {
     data () {
         return {
             isCollapsed: false,
+            activeName:'/admin/advisoryList',
             menuData:[
               {
                 link:'/admin/advisoryList',
-                name:'zixun',
+                name:'/admin/advisoryList',
                 icon:'chatboxes',
                 text:'咨询管理'
               },
               {
-                link:'/admin/404',
-                name:'yuyue',
-                icon:'clock',
-                text:'预约管理'
+                link:'/admin/paymentList',
+                name:'/admin/paymentList',
+                icon:'cash',
+                text:'收款记录'
               },
               {
-                link:'/admin/404',
-                name:'zhuanjia',
+                link:'/admin/mavinList',
+                name:'/admin/mavinList',
                 icon:'person',
                 text:'专家信息'
               },
               {
                 link:'/admin/schoolList',
-                name:'yuanxiao',
+                name:'/admin/schoolList',
                 icon:'university',
                 text:'院校专业'
               },
-              // {
-              //   link:'/admin/404',
-              //   name:'shoukuan',
-              //   icon:'cash',
-              //   text:'收款记录'
-              // },
-              // {
-              //   link:'/admin/404',
-              //   name:'wenzhang',
-              //   icon:'edit',
-              //   text:'文章编辑'
-              // },
             ],
             userInfo:''
         };
@@ -85,6 +74,9 @@ export default {
         localStorage.removeItem('userRole');
         this.$router.push('/login')
       }
+    },
+    created(){
+      this.activeName = this.$route.path
     },
     computed: {
         menuitemClasses: function () {
